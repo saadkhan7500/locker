@@ -67,7 +67,35 @@ public class Controller {
 			}
 
 			case 3: {
+				// Search a file
+				sc.nextLine();
+				System.out.println("Enter file name");
+				String fName = sc.nextLine();
+				System.out.println("Enter file Location");
+				String fLocatoin = sc.nextLine();
 
+				try {
+					BufferedReader br = dao.searchFile(fName, fLocatoin);
+					if (br != null) {
+						System.out.println(fName + ".txt Found on the given path, below is file content");
+						System.out.println("-------------------------------------");
+						String st;
+						// Condition holds true till
+						// there is character in a string
+						while ((st = br.readLine()) != null)
+
+							// Print the string
+							System.out.println(st);
+						System.out.println("--------------------------------------");
+					} else {
+						System.out.println("File not found!");
+					}
+
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
 			}
 
 			case 4: {

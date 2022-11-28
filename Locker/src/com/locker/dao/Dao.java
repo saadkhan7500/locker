@@ -54,7 +54,7 @@ public class Dao {
 		return status;
 	}
 	
-	public BufferedReader searchFile(String fName, String fLocation) throws FileNotFoundException
+	public BufferedReader searchFile(String fName, String fLocation) throws IOException
 	{
 		BufferedReader br =null;
 		
@@ -74,6 +74,25 @@ public class Dao {
 		
 		return br;
 		
+	}
+	
+	public boolean deleteFile(String fName, String fLocation)
+	{
+        boolean status = false;
+        try  
+        {         
+        File f= new File(fLocation+"/"+fName+".txt");           //file to be delete  
+        if(f.delete())                      //returns Boolean value  
+        {  
+            status = true;  
+        }    
+        }  
+        catch(Exception e)  
+        {  
+           e.printStackTrace();  
+        }  
+        
+		return status;
 	}
 
 }

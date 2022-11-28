@@ -90,17 +90,30 @@ public class Controller {
 					} else {
 						System.out.println("File not found!");
 					}
-
+                 br.close();
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 				break;
 			}
 
 			case 4: {
 				// To delete a file
+				sc.nextLine();
+				System.out.println("Enter file name");
+				String fName = sc.nextLine();
+				System.out.println("Enter file Location");
+				String fLocatoin = sc.nextLine();
 
+				if (dao.deleteFile(fName, fLocatoin)) {
+					System.out.println("File deleted Successfully");
+				} else {
+					System.out.println("File not found");
+				}
+
+				break;
 			}
 			case 5: {
 				// To do exit

@@ -11,6 +11,7 @@ import com.locker.dao.Dao;
 import java.io.File;
 
 public class Controller {
+	static int count=0;
 
 	public static void main(String[] args) throws IOException {
 		File file = new File("D://main_directory");
@@ -18,7 +19,7 @@ public class Controller {
 		file.mkdir();
 
 		Dao dao = new Dao();
-		int choice;
+		int choice=0;
 		int option;
 		System.out.println("Welcome to Locker Application");
 		System.out.println("Developed by Mohammad Saad");
@@ -117,16 +118,21 @@ public class Controller {
 			}
 			case 5: {
 				// To do exit
-
+                 count=1;
+                 choice=0;
 				break;
 			}
 
 			}
+            if(count!=1)
+            {
+			  System.out.println("Do you want to continue? press 1 for Yes press 0 for No");
+			  choice = sc.nextInt();
+            }
 
-			System.out.println("Do you want to continue? press 1 for Yes press 0 for No");
-
-			choice = sc.nextInt();
+			
 		} while (choice == 1);
+		System.out.println("              ***Thanks for using this application***");
 
 	}
 

@@ -40,7 +40,9 @@ public class Controller {
 			case 1: {
 				// To get all files in specified directory
 				List<String> files = dao.getAllFiles();
-
+                if(files==null)
+                	System.out.println("- - there is no file exist in this directory - -");
+                else
 				files.stream().forEach(System.out::println);
 
 				break;
@@ -88,13 +90,14 @@ public class Controller {
 							// Print the string
 							System.out.println(st);
 						System.out.println("--------------------------------------");
+						br.close();
 					} else {
 						System.out.println("File not found!");
 					}
-                 br.close();
+                 
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+//					e.printStackTrace();
 				}
 				
 				break;

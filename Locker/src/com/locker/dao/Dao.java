@@ -21,7 +21,8 @@ public class Dao {
 		File directoryPath = new File(fLocation);
 		// List of all files and directories
 		String contents[] = directoryPath.list();
-
+         if(contents.length==0)
+        	 return null;
 		// List of files and directories in the specified directory:
 		for (int i = 0; i < contents.length; i++) {
 			files.add(contents[i]);

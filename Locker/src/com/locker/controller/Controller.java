@@ -12,73 +12,80 @@ import java.io.File;
 
 public class Controller {
 
-	
+	public static void main(String[] args) throws IOException {
+		File file = new File("D://main_directory");
+		// Creating the directory
+		file.mkdir();
 
-	public static void main(String[] args) throws IOException 
-	{
-		 File file = new File("D://main_directory");
-	      //Creating the directory
-	     file.mkdir();
-	     
-		
 		Dao dao = new Dao();
 		int choice;
 		int option;
-	   System.out.println("Welcome to Locker Application");
-	   System.out.println("Developed by Mohammad Saad");
-	   System.out.println();
-	   
-	   do {
-	   System.out.println("*Please press any following option");
-	   System.out.println("Default directory - D://main_directory");
-	   System.out.println("press 1 -> Retreive files from current directory");
-	   System.out.println("press 2 -> Add a file to the exsiting directory");
-	   System.out.println("press 3 -> Search a file");
-	   System.out.println("press 4 -> Delete a file");
-       System.out.println("press 5 -> Exit");
-       Scanner sc = new Scanner(System.in);
-       option = sc.nextInt();
-       
-       switch(option)
-       {
-          case 1: {
-		        	  //To get all files in specified directory   
-			           List<String> files =dao.getAllFiles();
-			           
-			           
-			           System.out.println(files);
-			           
-			           break;
-        	        
-                  }
-          
-          case 2: {
-        	         
-                  }
-          
-          case 3: {
-        	  
-            }
-          
-          case 4: {
-        	  //To delete a file  
-        	  
-          }
-          case 5: {
-        	  //To do exit
-  	          
-	           
-	           break;
-         }
-	        
-          
-       }
-       
-       System.out.println("Do you want to continue? press 1 for Yes press 0 for No");
-	   
-	   choice = sc.nextInt();
-	   }
-	   while(choice==1);
+		System.out.println("Welcome to Locker Application");
+		System.out.println("Developed by Mohammad Saad");
+		System.out.println();
+
+		do {
+			System.out.println("*Please press any following option");
+			System.out.println("Default directory - D://main_directory");
+			System.out.println("press 1 -> Retreive files from current directory");
+			System.out.println("press 2 -> Add a file to the exsiting directory");
+			System.out.println("press 3 -> Search a file");
+			System.out.println("press 4 -> Delete a file");
+			System.out.println("press 5 -> Exit");
+			Scanner sc = new Scanner(System.in);
+			option = sc.nextInt();
+
+			switch (option) {
+			case 1: {
+				// To get all files in specified directory
+				List<String> files = dao.getAllFiles();
+
+				files.stream().forEach(System.out::println);
+
+				break;
+
+			}
+
+			case 2: {
+				// Add a file to the exsiting directory
+				sc.nextLine();
+				System.out.println("Enter file name");
+				String fName = sc.nextLine();
+				// sc.nextLine();
+				System.out.println("Enter the file location");
+				String fLocation = sc.nextLine();
+				System.out.println("Enter file Data");
+				// sc.nextLine();
+				String fData = sc.nextLine();
+				boolean status = dao.addFile(fName, fLocation, fData);
+				if (status)
+					System.out.println("File stored successfully");
+				else
+					System.out.println("File not stored! Enter proper File location");
+				break;
+
+			}
+
+			case 3: {
+
+			}
+
+			case 4: {
+				// To delete a file
+
+			}
+			case 5: {
+				// To do exit
+
+				break;
+			}
+
+			}
+
+			System.out.println("Do you want to continue? press 1 for Yes press 0 for No");
+
+			choice = sc.nextInt();
+		} while (choice == 1);
 
 	}
 

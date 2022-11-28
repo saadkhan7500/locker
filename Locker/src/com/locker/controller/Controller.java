@@ -23,6 +23,8 @@ public class Controller {
 		int option;
 		System.out.println("Welcome to Locker Application");
 		System.out.println("Developed by Mohammad Saad");
+		List<String> files1=dao.getAllFiles();
+		files1.stream().forEach(System.out::println);
 		System.out.println();
 
 		do {
@@ -125,6 +127,8 @@ public class Controller {
                  choice=0;
 				break;
 			}
+			default :
+				System.out.println("please press one of the above option");
 
 			}
             if(count!=1)
@@ -134,7 +138,8 @@ public class Controller {
             }
 
 			
-		} while (choice == 1);
+		} 
+		while (choice == 1);
 		System.out.println("              ***Thanks for using this application***");
 
 	}
